@@ -24,11 +24,7 @@ export default {
                 test: /\.vue$/,
                 use: [
                     {
-                        loader: 'vue-loader',
-                        options: {
-                            loaders: {
-                            }
-                        }
+                        loader: 'vue-loader'
                     },
                     {
                         loader: 'iview-loader',
@@ -37,6 +33,7 @@ export default {
                         }
                     }
                 ],
+                exclude: /node_modules/
             },
             {
                 test: /\.css$/,
@@ -47,14 +44,15 @@ export default {
             },
             {
                 test: /\.less$/,
+                loader: 'style-loader!css-loader!less-loader'
+            },
+            {
+                test: /\.scss$/,
                 use: [
                     'vue-style-loader',
                     'css-loader',
-                    'less-loader'
-                ],
-                include: [
-                    path.join(__dirname, 'app'),
-                ],
+                    'sass-loader'
+                ]
             },
             {
                 test: /\.tsx?$/,
