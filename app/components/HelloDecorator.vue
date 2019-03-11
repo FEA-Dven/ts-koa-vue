@@ -3,12 +3,13 @@
 <template>
     <div>
         <div class="greeting">Hello {{name}}{{exclamationMarks}}</div>
-        <button @click="decrement">-</button>
-        <button @click="increment">+</button>
+        <Button size='small' @click="decrement">-</Button>
+        <Button size='small' @click="increment">+</Button>
     </div>
 </template>
 
 <script lang="ts">
+import { Button } from 'iview';
 import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component

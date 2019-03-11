@@ -6,7 +6,9 @@
         <Button @click='changeMyNickName'>更改vuex名字</Button>
         <Button class='jump-btn' @click='testJump'>路由跳转测试vuex</Button>
         <Button type='primary' @click='showMessage'>测试iview事件</Button>
-        <Icon type="ios-checkmark" />
+        <div class='red-box'>
+            <div class='green-font'>测试less</div>
+        </div>
     </div>
 </template>
 
@@ -35,12 +37,24 @@ export default class Home extends Vue {
         this.changeNickName(this.name);
     }
     private showMessage() {
-        this.$Message.error({ content: '成功调用', duration: 20 });
+        this.$Message.success({ content: '成功调用' });
     }
 }
 </script>
 
-<style >
-
+<style lang='less'>
+.red-box{
+    position: absolute;
+    left:50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 50px;
+    border: 1px solid red;
+    .green-font{
+        font-size: 14px;
+        color: green;
+    }
+}
 </style>
 
