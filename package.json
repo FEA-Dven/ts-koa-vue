@@ -11,6 +11,9 @@
     "tslint-server": "tslint -c ./server/tslint.json -p ./server/tsconfig.json",
     "gulp": "gulp build"
   },
+  "pre-commit": [
+    "tslint"
+  ],
   "keywords": [],
   "author": {
     "name": "Daniel Rosenwasser",
