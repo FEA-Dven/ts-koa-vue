@@ -1,6 +1,6 @@
 # typescript vue project
 
-通过koa2引入webpack配置文件进行构建，用babel-loader, ts-loader解析ts文件。前端的server用gulp编译。功能包含了router,vuex,axios。
+通过koa2引入webpack配置文件进行构建，用babel-loader, ts-loader解析ts文件。前端的server用gulp编译。功能包含了router,vuex,axios并且引入iview组件库
 
 # 开始项目
 
