@@ -108,7 +108,7 @@ export default {
     ].concat(isDev ? [
         new webpack.HotModuleReplacementPlugin(),
     ] : [
-            new AssetsPlugin({ filename: './build/assets.json' }),
+            new AssetsPlugin({ filename: './../../build/assets.json' }),
             new webpack.optimize.ModuleConcatenationPlugin(),
             new MiniCssExtractPlugin({
                 filename: '[name].[hash:8].css',
