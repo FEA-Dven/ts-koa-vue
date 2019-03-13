@@ -9,9 +9,10 @@ import path = require('path');
 import * as koaWebpack from 'koa-webpack-middleware';
 import * as webpack from 'webpack';
 import webpackConfig from './webpack.config';
-const env: string = config.env;
+const env: string = process.env.NODE_ENV === 'prod' ? 'prod' : 'dev';
 const port: string = config.port;
 const isDev: boolean = env === 'dev';
+console.log(`isDev ===> ${isDev}`);
 
 interface Assets {
     tsvue: any;

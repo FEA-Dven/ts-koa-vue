@@ -9,7 +9,7 @@
     "tslint": "tslint -c ./tslint.json -p ./tsconfig.json",
     "build-server": "npm run tslint-server && npm run gulp",
     "tslint-server": "tslint -c ./server/tslint.json -p ./server/tsconfig.json",
-    "gulp": "gulp build",
+    "gulp": "cross-env NODE_ENV=dev gulp build",
     "package": "npm run tslint && npm run build-server && cross-env NODE_ENV=prod gulp package",
     "test": "gulp bundle"
   },
