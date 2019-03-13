@@ -4,18 +4,21 @@ import * as AssetsPlugin from 'assets-webpack-plugin';
 import * as VueLoaderPlugin from 'vue-loader/lib/plugin';
 import * as MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import config from './config/config';
-const env = config.env;
+const env = process.env.NODE_ENV || 'dev';
 const port = config.port;
 const isDev = env === 'dev';
+console.log(`isDev === > ${isDev}`);
 export default {
     mode: isDev ? 'development' : 'production',
     devtool: isDev ? '#eval' : 'none',
     entry: {
-        tsvue: ['webpack-hot-middleware/client?noInfo=true&reload=true', 'babel-polyfill', './app/index.ts'],
+        tsvue: isDev
+        ? ['webpack-hot-middleware/client?noInfo=true&reload=true', 'babel-polyfill', './app/index.ts']
+        : './app/index.ts'
     },
     output: {
-        path: path.resolve(__dirname, './build'),
-        publicPath: isDev ? `http://localhost:${port}/build/` : ``,
+        path: path.resolve(__dirname, '../../build'),
+        publicPath: isDev ? `http://localhost:${port}/build/` : `http://localhost:6006/`,
         filename: isDev ? '[name].js' : '[name].[hash:8].js',
     },
     module: {
@@ -36,22 +39,17 @@ export default {
                 exclude: /node_modules/
             },
             {
-                test: /\.css$/,
+                test: /\.less|\.css$/,
                 use: [
-                  'vue-style-loader',
-                  'css-loader'
-                ]
-            },
-            {
-                test: /\.less$/,
-                loader: 'style-loader!css-loader!less-loader'
-            },
-            {
-                test: /\.scss$/,
-                use: [
-                    'vue-style-loader',
-                    'css-loader',
-                    'sass-loader'
+                    {
+                        loader: isDev ? 'style-loader' : MiniCssExtractPlugin.loader
+                    },
+                    {
+                        loader: 'css-loader'
+                    },
+                    {
+                        loader: 'less-loader'
+                    }
                 ]
             },
             {

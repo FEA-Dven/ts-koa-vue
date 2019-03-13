@@ -9,7 +9,9 @@
     "tslint": "tslint -c ./tslint.json -p ./tsconfig.json",
     "build-server": "npm run tslint-server && npm run gulp",
     "tslint-server": "tslint -c ./server/tslint.json -p ./server/tsconfig.json",
-    "gulp": "gulp build"
+    "gulp": "gulp build",
+    "package": "npm run tslint && npm run build-server && cross-env NODE_ENV=prod gulp package",
+    "test": "gulp bundle"
   },
   "pre-commit": [
     "tslint"
@@ -36,6 +38,7 @@
     "@babel/runtime": "7.0.0-beta.46",
     "@types/koa": "^2.0.48",
     "@types/koa-bodyparser": "^4.2.0",
+    "assets-webpack-plugin": "^3.9.10",
     "axios": "^0.18.0",
     "babel-loader": "^8.0.4",
     "babel-plugin-transform-runtime": "^6.23.0",
@@ -62,6 +65,7 @@
     "koa-bodyparser": "^4.2.1",
     "koa-redis": "^3.1.2",
     "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
     "koa-useragent": "^1.1.0",
     "koa-webpack-middleware": "^1.0.7",
     "koa-xtpl": "^2.1.1",
@@ -70,8 +74,10 @@
     "lint-staged": "^6.0.0",
     "mini-css-extract-plugin": "^0.4.2",
     "node-fetch": "^2.2.0",
+    "node-sass": "4.11.0",
     "pre-commit": "^1.2.2",
     "run-sequence": "^2.2.1",
+    "sass-loader": "7.1.0",
     "style-loader": "^0.23.0",
     "ts-loader": "^4.4.2",
     "tslint": "^5.13.1",
@@ -85,9 +91,6 @@
     "vuex-class": "^0.3.1",
     "webpack": "^4.17.1",
     "webpack-cli": "^3.2.3",
-    "wrappy": "^1.0.2",
-    "assets-webpack-plugin": "^3.9.10",
-    "sass-loader": "7.1.0",
-    "node-sass": "4.11.0"
+    "wrappy": "^1.0.2"
   }
 }

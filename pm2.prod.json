@@ -1,0 +1,11 @@
+{
+    "apps": [
+      {
+        "name": "ts-vue",
+        "script": "./server/dist/app.js",
+        "env": {
+          "NODE_ENV": "prod"
+        }
+      }
+    ]
+  }
