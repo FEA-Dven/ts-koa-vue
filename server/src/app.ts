@@ -48,7 +48,7 @@ app.use(async function(ctx: Context, next: any) { // 设置环境和打包资源
         assets.tsvue = { js : publicPath + 'tsvue.js' };
         ctx.assets = assets;
     } else {
-        ctx.assets = require('../build/assets.json');
+        ctx.assets = require('../../build/assets.json');
     }
     await next();
 });
